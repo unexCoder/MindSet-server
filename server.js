@@ -1,12 +1,26 @@
 const express = require('express');
+const path = require('path'); 
+
+const time_stamper = require('./middleware/time_stamper')
+
+// declare server object
 const server = express();
-const port = 8008;
+const PORT = process.env.PORT || 8008;
 
-server.get('/', (req, res) => {
-  res.send('<style>body{background-color:#A3A3A4}</style><h1 style="color:#ffc600;">MindSet Server</h1>');
-})
+// middleware
+server.use(time_stamper);
 
-server.listen(port, () => {
+// API routes
+server.use('/api/clients',require('./routes/controllers/clients'))
+server.use('/api/applicants',require('./routes/controllers/applicants'))
+server.use('/api/psycologists',require('./routes/controllers/psycologists'))
+server.use('/api/admins',require('./routes/controllers/admins'))
+
+// default endpoint
+// server static folder
+server.use(express.static(path.join(__dirname,'public')));
+
+server.listen(PORT, () => {
     console.log(">>>>> server running >>>>>");
-    console.log(`>>>>> listening at http://localhost:${port} >>>>>`);
+    console.log(`>>>>> listening at http://localhost:${PORT} >>>>>`);
 })

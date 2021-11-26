@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 8008;
 
 // middleware
 server.use(time_stamper);
+// body parser middleware
+server.use(express.json());
+server.use(express.urlencoded({extended: false}));
 
 // API routes
 server.use('/api/clients',require('./routes/controllers/clients'))

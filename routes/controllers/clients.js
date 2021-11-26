@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
 
-const clients = require('../../data/clients.json');
+let clients = require('../../data/clients.json');
 
 // clients 'get all' route
 router.get('/', (req, res) => res.json(clients))
@@ -57,5 +58,75 @@ router.get('/byEmail/:email', (req, res) => {
     }
   });
   
+// clients CREATE route
+router.post('/', (req, res) => {
+    const id = clients.length + 1; 
+    const newClient = {
+        id: id,
+        company_name: req.body.company_name,
+        branch: req.body.branch,
+        phone: req.body.phone,
+        email: req.body.email
+    }
+
+    if(!newClient.company_name || !newClient.branch || !newClient.phone || !newClient.email) {
+        // return flag to exit conditional
+        return res.status(400).json({msg: "please include company name, branch, phone and email"});
+    } 
+    res.send(newClient);
+    clients.push(newClient);
+    // persistencia
+    fs.writeFile('./data/clients.json', JSON.stringify(clients), err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+    });
+});
+
+// clients UPDATE route
+router.put('/:id', (req, res) => {
+    const found = clients.some(client => client.id === parseInt(req.params.id));
+    if(found) {
+        const updClient = req.body;
+        clients.forEach(client => {
+            if(client.id === parseInt(req.params.id)) {
+                client.company_name = updClient.company_name ? updClient.company_name : client.company_name; 
+                client.branch = updClient.branch ? updClient.branch : client.branch; 
+                client.phone = updClient.phone ? updClient.phone : client.phone; 
+                client.email = updClient.email ? updClient.email : client.email; 
+
+                res.json({msg: 'Client Updated',client});
+                // persistencia
+                fs.writeFile('./data/clients.json', JSON.stringify(clients), err => {
+                    if (err) {
+                      console.error(err)
+                      return
+                    }
+                });            
+            }
+        });
+      } else {
+          res.status(400).json({msg: `no client with id of ${req.params.id}`});
+    }
+  });
+
+// clients DELETE route
+router.delete('/:id', (req, res) => {
+   const found = clients.some(client => client.id === parseInt(req.params.id));
+   if(found) {
+        clients = clients.filter( client => client.id !== parseInt(req.params.id))    
+        res.json({msg:'Client Deleted',clients});
+        // persistencia
+        fs.writeFile('./data/clients.json', JSON.stringify(clients), err => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        });
+    } else {
+        res.status(400).json({msg: `no client with id of ${req.params.id}`});
+  }
+});
 
 module.exports = router;

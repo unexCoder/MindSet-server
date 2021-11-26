@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
 
-const applicants = require('../../data/applicants.json');
+let applicants = require('../../data/applicants.json');
 
 // applicants 'get all' route
 router.get('/', (req, res) => res.json(applicants))
@@ -106,5 +107,95 @@ router.get('/byPostalCode/:code', (req, res) => {
         res.status(400).json({msg: `no applicant with postal code ${req.params.code}`});
     }
   });
+
+// applicants CREATE route
+router.post('/', (req, res) => {
+    const id = applicants.length + 1; 
+    const newAplicant = {
+        id: id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        user_name: req.body.user_name,
+        email: req.body.email,
+        password: req.body.password,
+        street: req.body.street,
+        street_number: req.body.street_number,
+        city: req.body.city,
+        postal_code: req.body.postal_code,
+        state: req.body.state,
+        country: req.body.country,
+        phone: req.body.phone,
+        exerience: req.body.experience
+    }
+
+    if(!newAplicant.first_name || !newAplicant.last_name || !newAplicant.password || !newAplicant.email) {
+        // return flag to exit conditional
+        return res.status(400).json({msg: "please include company first name, last name, email and password"});
+    } 
+    res.send(newAplicant);
+    applicants.push(newAplicant);
+    // persistencia
+    fs.writeFile('./data/applicants.json', JSON.stringify(applicants), err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+    });
+});
+
+// applicants UPDATE route
+router.put('/:id', (req, res) => {
+    const found = applicants.some(apply => apply.id === parseInt(req.params.id));
+    if(found) {
+        const updApply = req.body;
+        applicants.forEach(apply => {
+            if(apply.id === parseInt(req.params.id)) {
+                apply.first_name = updApply.first_name ? updApply.first_name : apply.first_name; 
+                apply.last_name = updApply.last_name ? updApply.last_name : apply.last_name; 
+                apply.user_name = updApply.user_name ? updApply.user_name : apply.user_name; 
+                apply.email = updApply.email ? updApply.email : apply.email; 
+                apply.password = updApply.password ? updApply.password : apply.password; 
+                apply.street = updApply.street ? updApply.street : apply.street; 
+                apply.street_number = updApply.street_number ? updApply.street_number : apply.street_number; 
+                apply.city = updApply.city ? updApply.city : apply.city; 
+                apply.postal_code = updApply.postal_code ? updApply.postal_code : apply.postal_code; 
+                apply.state = updApply.state ? updApply.state : apply.state; 
+                apply.country = updApply.country ? updApply.country : apply.country; 
+                apply.phone = updApply.phone ? updApply.phone : apply.phone; 
+                apply.experience = updApply.experience ? updApply.experience : apply.experience; 
+
+                res.json({msg: 'Application Updated',apply});
+                // persistencia
+                fs.writeFile('./data/applicants.json', JSON.stringify(applicants), err => {
+                    if (err) {
+                        console.error(err)
+                        return
+                    }
+                });
+            }
+        });
+      } else {
+          res.status(400).json({msg: `no application with id of ${req.params.id}`});
+    }
+  });
+
+// applicants DELETE route
+router.delete('/:id', (req, res) => {
+   const found = applicants.some(apply => apply.id === parseInt(req.params.id));
+   if(found) {
+        applicants = applicants.filter( apply => apply.id !== parseInt(req.params.id))
+        res.json({msg:'Application Deleted',applicants});
+        // persistencia
+        fs.writeFile('./data/applicants.json', JSON.stringify(applicants), err => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        });
+    } else {
+        res.status(400).json({msg: `no application with id of ${req.params.id}`});
+  }
+});
+
 
 module.exports = router;

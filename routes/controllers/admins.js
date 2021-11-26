@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
 
-const admins = require('../../data/admins.json');
+let admins = require('../../data/admins.json');
 
 // admins 'get all' route
 router.get('/', (req, res) => res.json(admins))
@@ -56,5 +57,78 @@ router.get('/byEmail/:email', (req, res) => {
         res.status(400).json({msg: `no admins with email ${req.params.email}`});
     }
   });
+
+// admins CREATE route
+router.post('/', (req, res) => {
+    const id = admins.length + 1; 
+    const newAdmin = {
+        id: id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        user_name: req.body.user_name,
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    if(!newAdmin.first_name || !newAdmin.last_name || !newAdmin.email || !newAdmin.password) {
+        // return flag to exit conditional
+        return res.status(400).json({msg: "please include first name, last name, email and password"});
+    } 
+    res.send(newAdmin);
+    admins.push(newAdmin);
+    // persistencia
+    fs.writeFile('./data/admins.json', JSON.stringify(admins), err => {
+        if (err) {
+          console.error(err)
+          return
+        }
+    });
+});
+
+// admins UPDATE route
+router.put('/:id', (req, res) => {
+    const found = admins.some(admin => admin.id === parseInt(req.params.id));
+    if(found) {
+        const updAdmin = req.body;
+        admins.forEach(admin => {
+            if(admin.id === parseInt(req.params.id)) {
+                admin.first_name = updAdmin.first_name ? updAdmin.first_name : admin.first_name; 
+                admin.last_name = updAdmin.last_name ? updAdmin.last_name : admin.last_name; 
+                admin.user_name = updAdmin.user_name ? updAdmin.user_name : admin.user_name; 
+                admin.email = updAdmin.email ? updAdmin.email : admin.email; 
+                admin.password = updAdmin.password ? updAdmin.password : admin.password; 
+
+                res.json({msg: 'Administator Updated',admin});
+                // persistencia
+                fs.writeFile('./data/admins.json', JSON.stringify(admins), err => {
+                    if (err) {
+                      console.error(err)
+                      return
+                    }
+                });
+            }
+        });
+      } else {
+          res.status(400).json({msg: `no admin with id of ${req.params.id}`});
+    }
+  });
+
+// admins DELETE route
+router.delete('/:id', (req, res) => {
+    const found = admins.some(admin => admin.id === parseInt(req.params.id));
+    if(found) {
+        admins = admins.filter( admin => admin.id !== parseInt(req.params.id))
+        res.json({msg:'Administrator Deleted',admins});
+        // persistencia
+        fs.writeFile('./data/admins.json', JSON.stringify(admins), err => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        });
+    } else {
+        res.status(400).json({msg: `no admin with id of ${req.params.id}`});
+    }
+});
 
 module.exports = router;

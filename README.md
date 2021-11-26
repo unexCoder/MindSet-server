@@ -5,80 +5,80 @@
 
 ### Clients routes
 
-GET
-/api/clients
-/api/clients/id
-/api/clients/byName/companyName
-/api/clients/byBranch/companyBranch
-/api/clients/byPhone/phone
+GET<br/>
+/api/clients<br/>
+/api/clients/id<br/>
+/api/clients/byName/companyName<br/>
+/api/clients/byBranch/companyBranch<br/>
+/api/clients/byPhone/phone<br/>
 /api/clients/byEmail/email
 
-POST
+POST<br/>
 /api/clients {JSON body}
 
-PUT
+PUT<br/>
 /api/clients/id {JSON body}
 
-DELETE
+DELETE<br/>
 /api/clients/id
 
 ### Applicants routes
 
-GET
-/api/applicants
-/api/applicants/id
-/api/applicants/byFirstName/firstName
-/api/applicants/byLastName/lastName
-/api/applicants/byUserName/userName
-/api/applicants/byEmail/email
-/api/applicants/byCity/city
-/api/applicants/byState/state
-/api/applicants/byCountry/country
-/api/applicants/byPhone/phone
+GET<br/>
+/api/applicants<br/>
+/api/applicants/id<br/>
+/api/applicants/byFirstName/firstName<br/>
+/api/applicants/byLastName/lastName<br/>
+/api/applicants/byUserName/userName<br/>
+/api/applicants/byEmail/email<br/>
+/api/applicants/byCity/city<br/>
+/api/applicants/byState/state<br/>
+/api/applicants/byCountry/country<br/>
+/api/applicants/byPhone/phone<br/>
 /api/applicants/byPostalCode/postalCode
 
-POST
+POST<br/>
 /api/applicants {JSON body}
 
-PUT
+PUT<br/>
 /api/applicants/id {JSON body}
 
-DELETE
+DELETE<br/>
 /api/applicants/id
 
 ### Psycologists routes
 
-GET
-/api/psycologists
-/api/psycologists/id
-/api/psycologists/byFirstName/firstName
-/api/psycologists/byLastName/lastName
+GET<br/>
+/api/psycologists<br/>
+/api/psycologists/id<br/>
+/api/psycologists/byFirstName/firstName<br/>
+/api/psycologists/byLastName/lastName<br/>
 /api/psycologists/byEmail/email
 
-POST
+POST<br/>
 /api/psycologists {JSON body}
 
-PUT
+PUT<br/>
 /api/psycologists/id {JSON body}
 
-DELETE
+DELETE<br/>
 /api/psycologists/id
 
 ### Admins routes
 
-GET
-/api/admins
-/api/admins/id
-/api/admins/byFirstName/firstName
-/api/admins/byLastName/lastName
-/api/admins/byUserName/userName
+GET<br/>
+/api/admins<br/>
+/api/admins/id<br/>
+/api/admins/byFirstName/firstName<br/>
+/api/admins/byLastName/lastName<br/>
+/api/admins/byUserName/userName<br/>
 /api/admins/byEmail/email
 
-POST
+POST<br/>
 /api/admins {JSON body}
 
-PUT
+PUT<br/>
 /api/admins/id {JSON body}
 
-DELETE
+DELETE<br/>
 /api/admins/id

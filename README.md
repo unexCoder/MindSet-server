@@ -1,6 +1,73 @@
 # MindSet-server
 ![MindSet](mindset-server.jpg)
 
+## v.0.0.1
+
+MongoDB & Mongoose implementation
+
+### Admins routes
+
+GET<br/>
+/api/admins<br/>
+/api/admins/:id<br/>
+/api/admins/byEmail/:email
+
+POST<br/>
+/api/admins/create {JSON body}
+
+PUT<br/>
+/api/admins/update/:id {JSON body}
+
+DELETE<br/>
+/api/admins/delete/:id
+
+### Applicants routes
+
+GET<br/>
+/api/applicants<br/>
+/api/applicants/:id<br/>
+/api/applicants/byEmail/:email
+
+POST<br/>
+/api/applicants/create {JSON body}
+
+PUT<br/>
+/api/applicants/update/:id {JSON body}
+
+DELETE<br/>
+/api/applicants/delete/:id
+
+### Psycologists routes
+
+GET<br/>
+/api/psycologists<br/>
+/api/psycologists/:id<br/>
+/api/psycologists/byEmail/:email
+
+POST<br/>
+/api/psycologists/create {JSON body}
+
+PUT<br/>
+/api/psycologists/update/:id {JSON body}
+
+DELETE<br/>
+/api/psycologists/delete/:id
+
+### Clients routes
+
+GET<br/>
+/api/clients<br/>
+/api/clients/:id<br/>
+
+POST<br/>
+/api/clients/create {JSON body}
+
+PUT<br/>
+/api/clients/update/:id {JSON body}
+
+DELETE<br/>
+/api/clients/delete/:id
+
 ## v.0.0.0
 
 ### Clients routes

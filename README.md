@@ -1,7 +1,7 @@
 # MindSet-server
 ![MindSet](mindset-server.jpg)
 
-## v.1.0.0
+## v.0.0.0
 
 ### Clients routes
 

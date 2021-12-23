@@ -21,7 +21,8 @@ const createClient = (req, res) => {
     company_name: req.body.company_name,
     branch: req.body.branch,
     email: req.body.email,
-    phone: req.body.phone
+    phone: req.body.phone,
+    password: req.body.password
   });
   newCo.save((error, newCo) => {
     if (error) return res.status(500).json({ msg: 'Error while creating new Company Client', error });
@@ -41,6 +42,7 @@ const updateClient = (req, res) => {
       company_name: req.body.company_name,
       branch: req.body.branch,
       phone: req.body.phone,
+      password: req.body.password
     },
     { new: true },
     (error, updatedAdmin) => {

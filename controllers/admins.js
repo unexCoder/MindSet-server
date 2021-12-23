@@ -25,6 +25,9 @@ const createAdmin = (req,res) => {
   const newAdmin = new Admin({
     email: req.body.email,
     password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    user_name: req.body.user_name
   });
   newAdmin.save((error, newAdmin) => {
     if (error) return res.status(500).json({ msg: 'Error while creating new Administrator account', error });

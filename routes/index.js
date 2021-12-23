@@ -12,7 +12,7 @@ const applicants = require('./applicants');
 router.use('/admins', admins);
 router.use('/clients', clients);
 router.use('/psycologists', psycologists);
-router.use('/applicants', applicants);
+router.use('/users', applicants);
 
 
 module.exports = router;

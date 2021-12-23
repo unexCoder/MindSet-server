@@ -23,8 +23,10 @@
   },
   "homepage": "https://github.com/unexCoder/MindSet-server#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.14"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

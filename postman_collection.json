@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "08dcba85-63ea-4836-8084-7654d60c3397",
+		"name": "MindSet server Cllection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8008/api/clients/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"company_name\":\"the coder group\",\n    \"branch\":\"software\",\n    \"email\":\"coders@log.jp\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/clients/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"clients",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/psycologists/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"Graham\",\n    \"last_name\":\"Coxon\",\n    \"password\":\"graxxxxy\",\n    \"email\":\"coxxy@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/psycologists/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"psycologists",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/admins/create Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"graxcos@gmail.com\",\n    \"password\":\"graxxxxy\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/admins/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"admins",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/applicants/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Graham\",\n    \"last_name\": \"Coxon\",\n    \"email\":\"graxcos@gmail.com\",\n    \"password\":\"graxxxxy\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/applicants/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"applicants",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/clients/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"company_name\":\"Coxon Fish \"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/clients/update/61ae634d912af4870776e588",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"clients",
+						"update",
+						"61ae634d912af4870776e588"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/psycologists/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"Graham\",\n    \"last_name\":\"Coxon Susex\",\n     \"password\":\"coxxiii\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/psycologists/update/61ae7a36f558347de2f3ce7f",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"psycologists",
+						"update",
+						"61ae7a36f558347de2f3ce7f"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/admins/update Copy 2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"Graham\",\n    \"last_name\":\"Coxon\",\n    \"user_name\":\"GraxCox\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/admins/update/61ae24b8082349da145194b7",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"admins",
+						"update",
+						"61ae24b8082349da145194b7"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/applicants/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"experience\":\"GraxCox\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/admins/update/61ae88a6f0319362aaeec3fb",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"admins",
+						"update",
+						"61ae88a6f0319362aaeec3fb"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/admins/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/api/admins/delete/61ae24b8082349da145194b7",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"admins",
+						"delete",
+						"61ae24b8082349da145194b7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/clients/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/api/clients/delete/61ae62576ec021ae0c601682",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"clients",
+						"delete",
+						"61ae62576ec021ae0c601682"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/applicants/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/api/applicants/delete/",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"applicants",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8008/api/psycologists/delete Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/api/psycologists/delete/61ae7a36f558347de2f3ce7f",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"psycologists",
+						"delete",
+						"61ae7a36f558347de2f3ce7f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

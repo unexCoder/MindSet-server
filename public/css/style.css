@@ -1,7 +1,227 @@
+*   {
+    font-family: Helvetica, Arial, sans-serif;
+
+ }
 body {
-    background-color:#A3A3A4;
+    background-color:#18364A;   
 }
 
 h1 {
     color:#ffc600;
+    font-size: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* init style */
+#mindset_main_title, #mindset_main_acces, .main_title {
+    margin: 5px 10px;
+}
+
+#mindset_main_acces a {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+/* main style */
+
+.main-header-container {
+    background-color: #A3A3A4;
+    height: 63px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.main-header-container .main_title h1{
+    color:#fff;
+    font-size: 40px;
+}
+.main-header-container .main_title h3{
+    color:#ffc600;
+    font-size: 18px;
+}
+/* // */
+
+.main-display-container {
+    display: flex;
+    -ms-flex-flow: row grow;
+}
+
+
+.left-scrollview {
+    background-color: #fff;
+    width: 20.7%;
+    height: 85vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.left-scrollview::-webkit-scrollbar {
+    display: none;
+}
+
+.left-scrollview-header {
+    background-color: #707070;
+    color: #18364A;
+    height: 18px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 12px;
+    padding-top: 2px;
+    position: fixed;
+    width: 170px;
+}
+
+/* dom styles  */
+.admin-card, .client-card, .user-card, .psycologist-card {
+    font-size: 12px;
+    margin: 0px 0px -1px 0px;
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    height: 35px;
+}
+
+.admin-card:hover, .client-card:hover, .user-card:hover, .psycologist-card:hover {
+    background-color: #A3A3A4;
+}
+
+.id-number-display {
+    font-size: 6px;
+    background-color: #ffc600;
+    color: #18364A;
+    border-style: solid;
+    border-width: 1px;
+    width: 88px;
+}
+
+.name-display{
+    padding: 4px 0px 0px 0px;
+    padding-left: 2px;
+    font-size: 9px;
+    color: #18364A;
+}
+
+.email-display{
+    padding: 2px 0px 0px 0px;
+    font-size: 7px;
+    padding-left: 2px;
+    color: #707070;
+}
+
+.admin-card:hover .email-display {
+    color: #fff;
+}
+.client-card:hover .email-display {
+    color: #fff;
+}
+.user-card:hover .email-display {
+    color: #fff;
+}
+.psycologist-card:hover .email-display {
+    color: #fff;
+}
+.admin-card:hover .email-display {
+    color: #fff;
+}
+
+.scrollview-container {
+    margin-top: 20px;
+}
+
+.right-display-form {
+    width: 79.3%;
+    display: flex;
+    flex-flow: column;
+    align-items: left;
+    justify-content: center;
+}
+
+.form-container {
+    flex-flow: column;
+}
+.form-container-row {
+    display: flex;
+    width: 80%;
+    height: 80vh;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    position: relative;
+    left: 4%;
+}
+
+
+.form-title {
+    color: #fff;
+    font-weight: 300;
+    padding: 1%;
+}
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    color: #fff;
+    padding: 1%;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.form input {
+    margin: 1.175% 0%;
+    width: 75%;
+    border-radius: 0%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff;
+    color: #18364A;
+    font-size: 10px;
+}
+
+.form-container-column {
+    flex: 50%;
+}
+
+.form-container-row-inner {
+    display: flex;
+    position: relative;
+    left: 0.5%;
+    width: 85%;
+}
+
+.form-container-column-inner {
+    flex: 50%;
+}
+
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.button {
+    background-color: transparent;
+    border-radius: 0%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff;
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    width: 20%;
+}
+
+form input:focus {
+    background-color: #ffc600;
+    border-radius: 0%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff;    
+    outline:none;
 }

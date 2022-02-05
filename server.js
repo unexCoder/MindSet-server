@@ -10,14 +10,13 @@ const router = require('./routes');
 // declare server object
 const server = express();
 const PORT = process.env.PORT;
-const db_user = process.env.DB_USER;
-const db_password = process.env.DB_PASSWORD;
+const DB_URL = process.env.DB_URL;
+console.log(process.env)
 
 ///////////////////////////////// 
 // conect mongodb with mongoose
 const mongoose = require('mongoose');
-const URI='mongodb+srv://'+db_user+':'+db_password+'@mindsetcluster.fyrnq.mongodb.net/mindset_data?retryWrites=true&w=majority';
-mongoose.connect(URI,{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DB_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
 .then((result) => console.log('connected to database'))
 .catch((err) => console.log(err));
 

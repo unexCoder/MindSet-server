@@ -4,7 +4,7 @@ window.onload =  () => {
     console.log('>> load clients js >>')
     let clientsDisplay = document.getElementById('clients-display');
     // fetch
-    const URL = 'http://localhost:8008/api/clients'        
+    const URL = window.location.origin+'/api/clients';       
     fetch(URL)
     .then((res) => res.json())
     .then((server_info) => {
@@ -52,7 +52,7 @@ const clientCardOnClick = (e) => {
     id = card.childNodes[0].textContent;      
     
     // fetch
-    fetch('http://localhost:8008/api/clients'+'/'+id.substring(3))
+    fetch(window.location.origin+'/api/clients'+'/'+id.substring(3))
     .then((res) => res.json())
     .then((server_info) => {
         form(server_info.ClientById)
@@ -140,7 +140,7 @@ const addBut = () => {
     data.email = form[3].value
     data.password = form[4].value
     // console.log(data)    
-    fetch('http://localhost:8008/api/clients/create', {
+    fetch(window.location.origin+'/api/clients/create', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
@@ -159,7 +159,7 @@ const updateBut = () => {
     data.phone = form[2].value
     data.email = form[3].value
     if(form[4].value === SEL_PASS) {
-        fetch('http://localhost:8008/api/clients/update/'+SEL_ID,{
+        fetch(window.location.origin+'/api/clients/update/'+SEL_ID,{
             method: 'PUT',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }            
@@ -172,7 +172,7 @@ const updateBut = () => {
 }
 
 const deleteBut = () => {
-    fetch('http://localhost:8008/api/clients/delete/'+SEL_ID, {
+    fetch(window.location.origin+'/api/clients/delete/'+SEL_ID, {
         method: 'DELETE'
     })
     .then((res) => res.json())
@@ -187,9 +187,4 @@ const select = (json) => {
     SEL_EMAIL = json.email;
     SEL_PHONE = json.phone;
     SEL_PASS = json.password;
-    // console.log(SEL_CO_NAME)
-    // console.log(SEL_BRANCH)
-    // console.log(SEL_PHONE)
-    // console.log(SEL_EMAIL)
-    // console.log(SEL_PASS)
 }

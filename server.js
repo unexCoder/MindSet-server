@@ -11,9 +11,8 @@ const router = require('./routes');
 const server = express();
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
-console.log(process.env)
-
 ///////////////////////////////// 
+
 // conect mongodb with mongoose
 const mongoose = require('mongoose');
 mongoose.connect(DB_URL,{ useNewUrlParser: true, useUnifiedTopology: true })

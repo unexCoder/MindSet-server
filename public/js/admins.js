@@ -2,14 +2,14 @@ let SEL_F_NAME,SEL_L_NAME,SEL_ID,SEL_U_NAME,SEL_PASS;
 
 window.onload =  () => {
     console.log('>> load admins js >>')
-
+    
     let adminsDisplay = document.getElementById('admins-display');
     // fetch
-    const URL = 'http://localhost:8008/api/admins'            
+    const URL = window.location.origin+'/api/admins';            
     fetch(URL)
     .then((res) => res.json())
     .then((server_info) => {
-        console.log(server_info)
+        // console.log(server_info)
         // DOM display
         const container = document.createElement('div');
         container.classList.add('scrollview-container');
@@ -52,7 +52,7 @@ const adminCardOnClick = (e) => {
     id = card.childNodes[0].textContent;
     
     // fetch getById
-    fetch('http://localhost:8008/api/admins'+'/'+id.substring(3))
+    fetch(window.location.origin+'/api/admins'+'/'+id.substring(3))
     .then((res) => res.json())
     .then((server_info) => {
         form (server_info);
@@ -144,10 +144,10 @@ const addBut = () => {
     data.user_name = form[2].value
     data.email = form[3].value
     data.password = form[4].value
-    console.log(data)
+    // console.log(data)
     
     
-    fetch('http://localhost:8008/api/admins/create', {
+    fetch(window.location.origin+'/api/admins/create', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
@@ -166,7 +166,7 @@ const updateBut = () => {
     data.user_name = form[2].value
     data.email = form[3].value
     if(form[4].value === SEL_PASS) {
-        fetch('http://localhost:8008/api/admins/update/'+SEL_ID,{
+        fetch(window.location.origin+'/api/admins/update/'+SEL_ID,{
             method: 'PUT',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }            
@@ -179,7 +179,7 @@ const updateBut = () => {
 }
 
 const deleteBut = () => {
-    fetch('http://localhost:8008/api/admins/delete/'+SEL_ID, {
+    fetch(window.location.origin+'/api/admins/delete/'+SEL_ID, {
         method: 'DELETE'
     })
     .then((res) => res.json())
@@ -193,9 +193,4 @@ const select = (json) => {
     SEL_ID = json.AdminById._id;
     SEL_U_NAME = json.AdminById.user_name;
     SEL_PASS = json.AdminById.password;
-    console.log(SEL_F_NAME)
-    console.log(SEL_L_NAME)
-    console.log(SEL_U_NAME)
-    console.log(SEL_ID)
-    console.log(SEL_PASS)
 }

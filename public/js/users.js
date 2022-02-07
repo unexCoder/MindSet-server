@@ -5,17 +5,15 @@ window.onload =  () => {
 
     let usersDisplay = document.getElementById('users-display');
     // fetch
-    const URL = 'http://localhost:8008/api/users'
-            
+    const URL = window.location.origin+'/api/users';
     fetch(URL)
     .then((res) => res.json())
     .then((server_info) => {
-        console.log(server_info)
         // DOM display
         const container = document.createElement('div');
         container.classList.add('scrollview-container');
         for(let i = 0; i < server_info.length; i++) {
-            console.log(server_info[i].first_name);
+            // console.log(server_info[i].first_name);
             const user = document.createElement('article');
             user.classList.add('user-card');
             const id = document.createElement('h5');
@@ -55,7 +53,7 @@ const userCardOnClick = (e) => {
     id = card.childNodes[0].textContent;        
 
     // fetch
-    fetch('http://localhost:8008/api/users'+'/'+id.substring(3))
+    fetch(window.location.origin+'/api/users'+'/'+id.substring(3))
     .then((res) => res.json())
     .then((server_info) => {
         form(server_info.ApplicantById)
@@ -238,7 +236,7 @@ const addBut = () => {
     // console.log(data)
     
     
-    fetch('http://localhost:8008/api/users/create', {
+    fetch(window.location.origin+'/api/users/create', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
@@ -263,7 +261,7 @@ const updateBut = () => {
     data.state = form[8].value
     data.country = form[9].value
     if(form[10].value === SEL_PASS) {
-        fetch('http://localhost:8008/api/users/update/'+SEL_ID,{
+        fetch(window.location.origin+'/api/users/update/'+SEL_ID,{
             method: 'PUT',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }            
@@ -276,7 +274,7 @@ const updateBut = () => {
 }
 
 const deleteBut = () => {
-    fetch('http://localhost:8008/api/users/delete/'+SEL_ID, {
+    fetch(window.location.origin+'/api/users/delete/'+SEL_ID, {
         method: 'DELETE'
     })
     .then((res) => res.json())

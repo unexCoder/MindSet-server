@@ -5,15 +5,15 @@ window.onload =  () => {
 
     let psycologistsDisplay = document.getElementById('psycologists-display');
     // fetch
-    const URL = 'http://localhost:8008/api/psycologists'
+    const URL = window.location.origin+'/api/psycologists';
     fetch(URL)
     .then((res) => res.json())
     .then((server_info) => {
-        console.log(server_info);
+        // console.log(server_info);
         const container = document.createElement('div');
         container.classList.add('scrollview-container');
         for(let i = 0; i < server_info.length; i++) {
-            console.log(server_info[i])
+            // console.log(server_info[i])
             const psyco = document.createElement('article');
             psyco.classList.add('psycologist-card');
             const id = document.createElement('h5');
@@ -52,7 +52,7 @@ const psycoCardOnClick = (e) => {
     id = card.childNodes[0].textContent;      
 
     // fetch
-    fetch('http://localhost:8008/api/psycologists'+'/'+id.substring(3))
+    fetch(window.location.origin+'/api/psycologists'+'/'+id.substring(3))
     .then((res) => res.json())
     .then((server_info) => {
         form(server_info.PsycologistById)
@@ -134,7 +134,7 @@ const addBut = () => {
     // console.log(data)
     
     
-    fetch('http://localhost:8008/api/psycologists/create', {
+    fetch(window.location.origin+'/api/psycologists/create', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
@@ -152,7 +152,7 @@ const updateBut = () => {
     data.last_name = form[1].value  
     data.email = form[2].value
     if(form[3].value === SEL_PASS) {
-        fetch('http://localhost:8008/api/psycologists/update/'+SEL_ID,{
+        fetch(window.location.origin+'/api/psycologists/update/'+SEL_ID,{
             method: 'PUT',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }            
@@ -165,7 +165,7 @@ const updateBut = () => {
 }
 
 const deleteBut = () => {
-    fetch('http://localhost:8008/api/psycologists/delete/'+SEL_ID, {
+    fetch(window.location.origin+'/api/psycologists/delete/'+SEL_ID, {
         method: 'DELETE'
     })
     .then((res) => res.json())
